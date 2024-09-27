@@ -1,0 +1,25 @@
+#!/bin/bash
+# User Management Script
+echo "User Management Script"
+
+# Add a new user
+echo -n "Enter the username to add: "
+read add_user
+if [ ! -z "$add_user" ]; then
+sudo adduser $add_user
+else
+echo "No username entered. Skipping user addition."
+fi
+
+# Optionally delete a user
+echo -n "Enter the username to delete: "
+read del_user
+if [ ! -z "$del_user" ]; then
+sudo deluser $del_user
+else
+
+echo "No username entered. Skipping user deletion."
+fi
+
+# Show current users
+cut -d: -f1 /etc/passwd
