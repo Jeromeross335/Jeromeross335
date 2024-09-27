@@ -1,0 +1,31 @@
+#!/bin/bash
+# Network Configuration Script
+
+echo "Network Configuration Script"
+
+# Display current network settings
+ifconfig
+
+# Set a static IP address
+echo -n "Do you want to set a static IP? (y/n): "
+read set_static
+
+if [ "$set_static" == "y" ]; then
+echo -n "Enter the network interface (e.g., eth0): "
+read interface
+echo -n "Enter the new IP address: "
+read new_ip
+sudo ifconfig $interface $new_ip
+echo "IP address set to $new_ip on $interface."
+fi
+
+# Configure DNS
+echo -n "Do you want to configure DNS? (y/n): "
+read configure_dns
+if [ "$configure_dns" == "y" ]; then
+echo -n "Enter the DNS server IP address: "
+read dns_ip
+sudo echo "nameserver $dns_ip" > /etc/resolv.conf
+echo "DNS set to $dns_ip."
+fi
+
