@@ -1,0 +1,17 @@
+#!/bin/bash
+# Permissions Management Script
+
+echo "Permissions Management Script"
+
+# Set file permissions
+
+echo -n "Enter the file path to change permissions: "
+read file_path
+if [ -f "$file_path" ]; then
+echo "Enter the permissions to set (e.g., 755): "
+read permissions
+chmod $permissions $file_path
+echo "Permissions for $file_path set to $permissions."
+else
+echo "File does not exist. Skipping permission change."
+fi
